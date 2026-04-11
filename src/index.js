@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
+document.querySelector("#tasks").textContent
