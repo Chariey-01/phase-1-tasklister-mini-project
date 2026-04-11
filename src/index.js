@@ -1,22 +1,17 @@
-const form = document.querySelector("#create-task-form");
-const taskList = document.querySelector("#tasks");
+const form = document.getElementById("create-task-form");
+const taskList = document.getElementById("tasks");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  const taskInput = document.getElementById("new-task-description");
+  const task = taskInput.value;
 
-  const task = event.target["new-task-description"].value;
-
-  buildToDo(task);
-
-  // clear form
-  form.reset();
-});
-
-function buildToDo(task) {
   const li = document.createElement("li");
   li.textContent = task;
 
   taskList.appendChild(li);
-}
+
+  taskInput.value = "";
+});
 
