@@ -1,26 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // your code here// Wait for DOM to load (important for some graders)
-  const form = document.getElementById("create-task-form");
-  const input = document.getElementById("new-task-description");
-  const taskList = document.getElementById("tasks");
+const form = document.querySelector("#create-task-form");
+const taskList = document.querySelector("#tasks");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    const taskText = input.value.trim();
 
-    if (taskText === "") return;
+  const task = event.target["new-task-description"].value;
 
-    // Create new task
-    const li = document.createElement("li");
-    li.textContent = taskText;
+  buildToDo(task);
 
-    // Add to list
-    taskList.appendChild(li);
-
-    // Clear input
-    input.value = "";
-  });
-
+  // clear form
+  form.reset();
 });
-document.querySelector("#tasks").textContent
+
+function buildToDo(task) {
+  const li = document.createElement("li");
+  li.textContent = task;
+
+  taskList.appendChild(li);
+}
+
